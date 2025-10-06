@@ -1,0 +1,21 @@
+<pre><code>package org.pwss;
+
+import org.pwss.quarantineManager_aes.FileQuarantineManager;
+import org.pwss.quarantineManager_aes.dto.MetaDataResult;
+
+
+import java.nio.file.Path;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        final Path path = Path.of("C:\\your\\path\\your_file.txt");
+       
+        FileQuarantineManager fileQuarantineManager = new FileQuarantineManager();
+        MetaDataResult metaDataResult = fileQuarantineManager.quarantine(path);
+        
+        System.out.println(metaDataResult.keyName());
+        
+        fileQuarantineManager.unquarantine(metaDataResult.keyName().split(".enc")[0]);
+    }
+}
+</code></pre>
